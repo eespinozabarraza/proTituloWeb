@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { User } from '../shared/user';
+import { Usuario } from '../shared/usuario';
 import {AngularFireDatabase, AngularFireList, AngularFireObject } from '@angular/fire/database';
 
 @Injectable({
@@ -19,10 +20,18 @@ export class CrudService {
       mobileNumber: user.mobileNumber
     })
   }
+  AddUsuario(usuario:Usuario){
+    this.usersRef.push({
+      $key: usuario.$Userkey,
+      eMail: usuario.email,
+      
+    })
+  }
   GetUser(id:string){
     this.userRef = this.db.object('users-list/' + id);
     return this.userRef;
   }
+  
   GetUsersList(){
     this.usersRef=this.db.list('users-list');
     return this.usersRef;
@@ -41,4 +50,27 @@ export class CrudService {
     this.userRef=this.db.object('users-list/' + id);
     this.userRef.remove();
   }
+
+  GetUsuario(id:string){
+    this.userRef = this.db.object('Usuarios' + id);
+    return this.userRef;
+  }
+  GetUsuariosList(){
+    this.usersRef=this.db.list('Usuarios');
+    return this.usersRef;
+    
+  }
+
+  UpdateUsuario(usuario:Usuario){
+    this.userRef.update({
+      $key: usuario.$Userkey,
+      eMail: usuario.email,
+      
+    })
+  }
+
+  DeleteUsuario(id:string){
+    this.userRef=this.db.object('Usuarios/' + id);
+    this.userRef.remove();
+  }  
 }

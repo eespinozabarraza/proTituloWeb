@@ -13,15 +13,11 @@ import { AdminModule } from  './admin/admin.module';
 
 import { AngularFireModule } from "@angular/fire";
 import { AngularFireAuthModule } from "@angular/fire/auth";
-import { AddUserComponent } from './add-user/add-user.component';
-import { EditUserComponent } from './edit-user/edit-user.component';
-import { UserListComponent } from './user-list/user-list.component';
 
-import { ReactiveFormsModule } from '@angular/forms';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { ToastrModule } from 'ngx-toastr';
 
-import { NgxPaginationModule } from 'ngx-pagination';
+
+
+
 import { AngularFireDatabase, AngularFireDatabaseModule } from '@angular/fire/database';
 
 var config = {
@@ -43,28 +39,23 @@ var config = {
     HomeComponent,
     AboutComponent,
     ContactComponent,
-    AddUserComponent,
-    EditUserComponent,
-    UserListComponent
+    
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     AdminModule,
-    ReactiveFormsModule,
+    
 
     AngularFireModule.initializeApp(config),
     AngularFireAuthModule,
     AngularFireDatabaseModule,
 
-    BrowserAnimationsModule, // required animations module
-    ToastrModule.forRoot(), // ToastrModule added
 
-    NgxPaginationModule
+    
   ],
   providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
 
-class MainModule{}

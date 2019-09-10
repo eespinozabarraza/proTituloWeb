@@ -6,14 +6,42 @@ import { ProjectUpdateComponent } from './project-update/project-update.componen
 import { ProjectComponent } from './project/project.component';
 import { AdminRoutingModule } from  './admin-routing.module';
 import { LoginComponent } from './login/login.component';
+import { AddUserComponent } from './add-user/add-user.component';
+import { EditUserComponent } from './edit-user/edit-user.component';
+import { UserListComponent } from './user-list/user-list.component';
+
+import { ReactiveFormsModule } from '@angular/forms';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ToastrModule } from 'ngx-toastr';
+import { NgxPaginationModule } from 'ngx-pagination';
+import { UsuarioListaComponent } from './usuario-lista/usuario-lista.component';
+
 
 
 
 @NgModule({
-  declarations: [ProjectListComponent, ProjectCreateComponent, ProjectUpdateComponent, ProjectComponent, LoginComponent],
+  declarations: [
+
+    ProjectListComponent, 
+    ProjectCreateComponent, 
+    ProjectUpdateComponent, 
+    ProjectComponent, 
+    LoginComponent,
+    AddUserComponent,
+    EditUserComponent,
+    UserListComponent,
+    UsuarioListaComponent
+  
+  ],
   imports: [
     CommonModule,
-    AdminRoutingModule
+    AdminRoutingModule,
+    
+    ReactiveFormsModule,
+    BrowserAnimationsModule, // required animations module
+    ToastrModule.forRoot(), // ToastrModule added
+    NgxPaginationModule
   ]
 })
 export class AdminModule { }
+class MainModule{}

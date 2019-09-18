@@ -15,6 +15,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { UsuarioListaComponent } from './usuario-lista/usuario-lista.component';
+import { RegisterComponent } from './register/register.component';
 
 
 
@@ -30,7 +31,8 @@ import { UsuarioListaComponent } from './usuario-lista/usuario-lista.component';
     AddUserComponent,
     EditUserComponent,
     UserListComponent,
-    UsuarioListaComponent
+    UsuarioListaComponent,
+    RegisterComponent
   
   ],
   imports: [

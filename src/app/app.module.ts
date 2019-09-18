@@ -13,22 +13,11 @@ import { AdminModule } from  './admin/admin.module';
 
 import { AngularFireModule } from "@angular/fire";
 import { AngularFireAuthModule } from "@angular/fire/auth";
-
-
-
-
-
 import { AngularFireDatabase, AngularFireDatabaseModule } from '@angular/fire/database';
 
-var config = {
-  apiKey: "AIzaSyBTu8dOSA2fe0znRodLoXs_8iCpHCAXQPw",
-  authDomain: "protitulo-1e097.firebaseapp.com",
-  databaseURL: "https://protitulo-1e097.firebaseio.com",
-  projectId: "protitulo-1e097",
-  storageBucket: "",
-  messagingSenderId: "708723936327",
-  appId: "1:708723936327:web:205f7f865606a573"
- };
+import { environment } from '../environments/environment';
+
+
 
 
 @NgModule({
@@ -47,7 +36,7 @@ var config = {
     AdminModule,
     
 
-    AngularFireModule.initializeApp(config),
+    AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFireAuthModule,
     AngularFireDatabaseModule,
 

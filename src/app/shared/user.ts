@@ -5,3 +5,10 @@ export interface User {
     email: string
     mobileNumber: Number;
  }
+
+ export interface UserInterface {
+     id?: string;
+     email?: string;
+     password?: string;
+
+ }

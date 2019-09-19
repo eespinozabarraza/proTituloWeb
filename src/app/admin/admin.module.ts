@@ -31,7 +31,7 @@ import { RegisterComponent } from './register/register.component';
     AddUserComponent,
     EditUserComponent,
     UserListComponent,
-    UsuarioListaComponent,
+    UsuarioListaComponent, 
     RegisterComponent
   
   ],
@@ -39,7 +39,7 @@ import { RegisterComponent } from './register/register.component';
     CommonModule,
     AdminRoutingModule,
     
-    ReactiveFormsModule,
+    ReactiveFormsModule, 
     BrowserAnimationsModule, // required animations module
     ToastrModule.forRoot(), // ToastrModule added
     NgxPaginationModule

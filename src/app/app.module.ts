@@ -17,6 +17,7 @@ import { AngularFireAuthModule } from "@angular/fire/auth";
 import { AngularFireDatabase, AngularFireDatabaseModule } from '@angular/fire/database';
 
 import { environment } from '../environments/environment';
+import { TermsComponent } from './terms/terms.component';
 
 
 
@@ -29,6 +30,7 @@ import { environment } from '../environments/environment';
     HomeComponent,
     AboutComponent,
     ContactComponent,
+    TermsComponent,
     
   ],
   imports: [

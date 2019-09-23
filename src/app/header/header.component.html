@@ -36,14 +36,14 @@
         </ul>
         <ul class="navbar-nav ml-auto">
             <li class="nav-item" *ngIf="!authService.isLoggedIn">
-              <a class="nav-link" routerLink="/admin/register">Register
+              <a class="nav-link" routerLink="/admin/register">Registro
               </a>
             </li>
             <li class="nav-item" *ngIf="authService.isLoggedIn">
-              <a class="nav-link" routerLink="">Profile</a>
+              <a class="nav-link" routerLink="">Ubicaciones por usuario</a>
             </li>
             <li class="nav-item" *ngIf="authService.isLoggedIn">
-              <a class="nav-link" routerLink="">List Books</a>
+              <a class="nav-link" routerLink="">Lista Usuarios</a>
             </li>
             <li class="nav-item" *ngIf="!authService.isLoggedIn">
               <a class="nav-link" routerLink="/admin/login">Login

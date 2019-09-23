@@ -29,9 +29,7 @@ export class LoginComponent implements OnInit {
   onLogin(values):void {
    //console.log('email', this.email);
     //console.log('password', this.password)
-    this.authService.login(values.email, values.password).then((res) => {
-      this.onLoginRedirect();
-    }).catch(err => console.log('err', err.message));
+    this.authService.login(values.email, values.password);
     
     };
 

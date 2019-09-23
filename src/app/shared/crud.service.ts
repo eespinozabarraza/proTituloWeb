@@ -1,7 +1,9 @@
+import { UserInterface } from './user';
 import { Injectable } from '@angular/core';
 import { User } from '../shared/user';
-import { Usuario } from '../shared/usuario';
 import {AngularFireDatabase, AngularFireList, AngularFireObject } from '@angular/fire/database';
+
+
 
 @Injectable({
   providedIn: 'root'
@@ -20,10 +22,11 @@ export class CrudService {
       mobileNumber: user.mobileNumber
     })
   }
-  AddUsuario(usuario:Usuario){
+  AddUsuario(usuario:UserInterface){
     this.usersRef.push({
-      $key: usuario.$Userkey,
-      eMail: usuario.email,
+      $key: usuario.id,
+      email: usuario.email,
+      type: usuario.tipo ="alumno"
       
     })
   }
@@ -61,10 +64,11 @@ export class CrudService {
     
   }
 
-  UpdateUsuario(usuario:Usuario){
+  UpdateUsuario(usuario:UserInterface){
     this.userRef.update({
-      $key: usuario.$Userkey,
-      eMail: usuario.email,
+      $key: usuario.id,
+      email: usuario.email,
+      type: usuario.tipo
       
     })
   }

@@ -44,7 +44,7 @@ export class RegisterComponent implements OnInit {
     this.submitted=true;
     if(this.registerForm.valid){
       this.authService.registerUser(values.email, values.password);
-      this.crudApi.AddUsuario(email());
+      this.crudApi.AddUsuario(this.email.value);
       this.toastr.success(this.registerForm.controls['email'].value + ' successfully added!');
       
     }else{

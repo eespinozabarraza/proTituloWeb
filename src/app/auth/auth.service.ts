@@ -22,20 +22,21 @@ export class AuthService {
       }
     })
    }
-   registerUser(email: string, pass: string) {
-    return new Promise((resolve, reject) => {
-      this.afAuth.auth.createUserWithEmailAndPassword(email, pass)
-        .then(userData => resolve(userData),
-        err=>reject(err));
-    });
-  }
-   login(email:  string, password:  string) {
-
-    return new Promise((resolve, reject) => {
-      this.afAuth.auth.signInWithEmailAndPassword(email, password)
-        .then(userData => resolve(userData),
-        err => reject(err));
-    });
+   async registerUser(email: string, password: string) {
+     try {
+       await  this.afAuth.auth.createUserWithEmailAndPassword(email, password);
+       this.router.navigate(['admin/list']);
+      } catch (e) {
+        alert("Error!"  +  e.message);
+      }
+    }
+   async login(email:  string, password:  string) {
+     try {
+       await  this.afAuth.auth.signInWithEmailAndPassword(email, password);
+       this.router.navigate(['admin/list']);
+      } catch (e) {
+        alert("Error!"  +  e.message);
+      }
     }
 
     async logout(){

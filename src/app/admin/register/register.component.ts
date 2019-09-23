@@ -1,7 +1,11 @@
+import { MustMatch } from './../../shared/must-match.validator';
 import { Router } from '@angular/router';
 import { AuthService } from './../../auth/auth.service';
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { CrudService } from '../../shared/crud.service';    // CRUD services API
+import { ToastrService } from 'ngx-toastr';
+
 
 
 @Component({
@@ -11,22 +15,47 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 })
 export class RegisterComponent implements OnInit {
   registerForm: FormGroup;
+  submitted = false;
+  
+  
   constructor(
+    public toastr: ToastrService,
+    public crudApi: CrudService,
     private router: Router, 
     private authService: AuthService,
-    private builder: FormBuilder) {
-      this.registerForm = this.builder.group({
-        email:['', Validators.compose([Validators.email, Validators.required])],
-        password:['',Validators.required]
-      })}
+    private builder: FormBuilder) {}
 
   ngOnInit() {
+    this.crudApi.GetUsuariosList();
+    this.registerForm = this.builder.group({
+      email:['',[Validators.email, Validators.required]],
+      password:['',[Validators.required, Validators.minLength(6)]],
+      confirmPassword: ['',Validators.required],
+      acceptTerms: [false, Validators.requiredTrue]
+    },{ validator: MustMatch('password', 'confirmPassword')
+  });
   }
-  onAddUser(values){
-    this.authService.registerUser(values.email, values.password)
-    .then((res)=>{
-      this.router.navigate(['admin/user_list']);
-    }).catch(err=>console.log('err', err.message));
+  get f(){ return this.registerForm.controls;}
+
+  get email() {
+    return this.registerForm.get('email');
+  }
+  onAddUser(values):void{
+    this.submitted=true;
+    if(this.registerForm.valid){
+      this.authService.registerUser(values.email, values.password);
+      this.crudApi.AddUsuario(email());
+      this.toastr.success(this.registerForm.controls['email'].value + ' successfully added!');
+      
+    }else{
+      return;
+      
+    }
+    
 
   }
+  onReset() {
+    this.submitted = false;
+    this.registerForm.reset();
+}
 }

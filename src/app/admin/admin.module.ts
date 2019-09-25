@@ -16,6 +16,7 @@ import { ToastrModule } from 'ngx-toastr';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { UsuarioListaComponent } from './usuario-lista/usuario-lista.component';
 import { RegisterComponent } from './register/register.component';
+import { UbicacionListComponent } from './ubicacion-list/ubicacion-list.component';
 
 
 
@@ -32,7 +33,8 @@ import { RegisterComponent } from './register/register.component';
     EditUserComponent,
     UserListComponent,
     UsuarioListaComponent, 
-    RegisterComponent
+    RegisterComponent, 
+    UbicacionListComponent
   
   ],
   imports: [

@@ -17,6 +17,7 @@ import { AngularFireAuthModule } from "@angular/fire/auth";
 import { AngularFireDatabase, AngularFireDatabaseModule } from '@angular/fire/database';
 
 import { TermsComponent } from './terms/terms.component';
+import { PoliticasComponent } from './politicas/politicas.component';
 
 const config ={
   firebaseConfig:{
@@ -39,6 +40,7 @@ const config ={
     AboutComponent,
     ContactComponent,
     TermsComponent,
+    PoliticasComponent,
     
   ],
   imports: [

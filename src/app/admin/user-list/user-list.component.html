@@ -2,31 +2,24 @@
 
 <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
     <h1 class="h2">Lista de Usuarios Aplicacion Movil</h1>
-    <!-- It won't show if there is no user data -->
-    <a routerLink="/admin/add-user" class="btn btn-success" *ngIf="hideWhenNoUsuario">
-      <i class="fas fa-plus custom-fa-plus"></i>
-      Add user
-    </a>
+    
+   
   </div>
   
   <div class="pricing-header mx-auto">
   
-    <!-- Preloader shows before the data loads-->
+    
     <div class="no-data text-center" *ngIf="preLoader">
       <img src="assets/preloader.gif" class="preloader-icon" alt="No user">
     </div>
   
-    <!-- No data shows when their is no user data available -->
+    
     <div class="no-data text-center" *ngIf="noData">
       <img src="assets/no-user.svg" class="nodata-msg" alt="No user">
       <p class="nodata-msg">No user added yet!</p>
-      <a routerLink="/admin/add-user" class="btn btn-success">
-        <i class="fas fa-plus custom-fa-plus"></i>
-        Add user
-      </a>
     </div>
   
-    <!-- Showing users data -->
+    
     <div class="table-responsive" *ngIf="hideWhenNoUsuario">
       
       <table class="table table-bordered table-responsive-sm table-responsive-md table-responsive-lg">
@@ -57,7 +50,6 @@
               </td>
               
             <td class="text-center action-block">
-              <!-- routerLink="/edit-user/{{user.$key}}" is refered to { path: 'edit-user/:id', component: EditUserComponent } in app-routing.moudles.ts -->
               <button class="far fa-trash-alt" (click)="deleteUsuario(usuario) " class="btn btn-danger" *ngIf="hideWhenNoUsuario">
                 Eliminar</button></td>
 
@@ -68,6 +60,5 @@
         </tbody>
       </table>
     </div>
-    <!-- Pagination -->
     <pagination-controls (pageChange)="p = $event" autoHide="true" responsive="true"></pagination-controls>
   </div>

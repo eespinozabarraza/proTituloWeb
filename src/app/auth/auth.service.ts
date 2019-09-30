@@ -5,6 +5,7 @@ import { auth } from  'firebase/app';
 import { AngularFireAuth } from  "@angular/fire/auth";
 import { User } from  'firebase';
 import { Location } from '@angular/common';
+import { ToastrService } from 'ngx-toastr';
 
 @Injectable({
   providedIn: 'root'

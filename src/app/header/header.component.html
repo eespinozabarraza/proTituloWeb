@@ -26,10 +26,10 @@
                     Administración 
                 </a>
                   <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" routerLink="/admin/add-user">Crear</a>
-                    <a class="dropdown-item" routerLink="/admin/edit-user">Actualizar</a>
+                    <a class="dropdown-item" routerLink="/admin/add-user">Crear Usuario WEB</a>
+                    <a class="dropdown-item" routerLink="/admin/edit-user">Lista Usuarios WEB</a>
                     <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" routerLink="/admin/user-list">Lista</a>
+                    <a class="dropdown-item" routerLink="/admin/user-list">Usuarios MoviTracky APP</a>
                   </div>
                 </li>
             
@@ -38,12 +38,6 @@
             <li class="nav-item" *ngIf="!authService.isLoggedIn">
               <a class="nav-link" routerLink="/admin/register">Registro
               </a>
-            </li>
-            <li class="nav-item" *ngIf="authService.isLoggedIn">
-              <a class="nav-link" routerLink="">Ubicaciones por usuario</a>
-            </li>
-            <li class="nav-item" *ngIf="authService.isLoggedIn">
-              <a class="nav-link" routerLink="">Lista Usuarios</a>
             </li>
             <li class="nav-item" *ngIf="!authService.isLoggedIn">
               <a class="nav-link" routerLink="/admin/login">Login

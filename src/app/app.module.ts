@@ -16,10 +16,18 @@ import { AngularFireModule } from "@angular/fire";
 import { AngularFireAuthModule } from "@angular/fire/auth";
 import { AngularFireDatabase, AngularFireDatabaseModule } from '@angular/fire/database';
 
-import { environment } from '../environments/environment';
 import { TermsComponent } from './terms/terms.component';
 
-
+const config ={
+  firebaseConfig:{
+    apiKey: "AIzaSyDb3YW2ffNQfFVOTho5KyyYzFgk8egcvJY",
+    authDomain: "protituloproduccion-11e16.firebaseapp.com",
+    databaseURL: "https://protituloproduccion-11e16.firebaseio.com",
+    projectId: "protituloproduccion-11e16",
+    storageBucket: "",
+    messagingSenderId: "1054870562797",
+    appId: "1:1054870562797:web:f9aca4b22bb782d29ae9e4"
+}}
 
 
 @NgModule({
@@ -41,7 +49,7 @@ import { TermsComponent } from './terms/terms.component';
     ReactiveFormsModule,
     
 
-    AngularFireModule.initializeApp(environment.firebaseConfig),
+    AngularFireModule.initializeApp(config.firebaseConfig),
     AngularFireAuthModule,
     AngularFireDatabaseModule,
 

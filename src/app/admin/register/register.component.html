@@ -42,7 +42,7 @@
                   <hr>
                   <div class="form-group form-check">
                     <input type="checkbox" formControlName="acceptTerms" id="acceptTerms" class="form-check-input" [ngClass]="{ 'is-invalid': submitted && f.acceptTerms.errors }" />
-                    <label for="acceptTerms" class="form-check-label" routerLink="/terms" >Acepta los Terminos & Condiciones</label>
+                    <label for="acceptTerms" class="form-check-label" routerLink="/terms">Acepta los Terminos & Condiciones</label>
                     <div *ngIf="submitted && f.acceptTerms.errors" class="invalid-feedback">Debes aceptar los T y C</div>
                 </div>
                   

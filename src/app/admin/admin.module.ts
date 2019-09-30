@@ -14,9 +14,9 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
 import { NgxPaginationModule } from 'ngx-pagination';
-import { UsuarioListaComponent } from './usuario-lista/usuario-lista.component';
+
 import { RegisterComponent } from './register/register.component';
-import { UbicacionListComponent } from './ubicacion-list/ubicacion-list.component';
+
 
 
 
@@ -32,9 +32,9 @@ import { UbicacionListComponent } from './ubicacion-list/ubicacion-list.componen
     AddUserComponent,
     EditUserComponent,
     UserListComponent,
-    UsuarioListaComponent, 
+    
     RegisterComponent, 
-    UbicacionListComponent
+    
   
   ],
   imports: [

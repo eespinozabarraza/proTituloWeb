@@ -10,9 +10,9 @@ import { AdminGuard } from  './admin.guard';
 import { AddUserComponent } from './add-user/add-user.component';
 import { EditUserComponent } from './edit-user/edit-user.component';
 import { UserListComponent } from './user-list/user-list.component';
-import { UsuarioListaComponent } from './usuario-lista/usuario-lista.component';
+
 import { RegisterComponent } from './register/register.component';
-import { UbicacionListComponent } from './ubicacion-list/ubicacion-list.component';
+
 
 const  routes:  Routes  = [
 { path:  'admin', component:  ProjectComponent,children: [
@@ -24,8 +24,8 @@ const  routes:  Routes  = [
     { path: 'add-user', component: AddUserComponent, canActivate: [AdminGuard]},
     { path: 'edit-user/:id', component: EditUserComponent, canActivate: [AdminGuard]},
     { path: 'user-list', component: UserListComponent, canActivate: [AdminGuard]},
-    { path: 'usuario-lista', component: UsuarioListaComponent, canActivate: [AdminGuard]},
-    { path: 'ubicacion-list', component: UbicacionListComponent, canActivate: [AdminGuard]}
+    
+    
 ] }
 ];
 @NgModule({

@@ -23,8 +23,9 @@ export class CrudService {
  GetUbicacionList(){
     this.eventsRef=this.db.list('Ubicaciones');
     return this.eventsRef;
-
   }
+ 
+
 
   DeleteUbicacion(id:string){
     this.eventRef=this.db.object('Ubicaciones/' + id);

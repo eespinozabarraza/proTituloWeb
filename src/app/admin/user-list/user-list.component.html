@@ -28,33 +28,42 @@
   
     <!-- Showing users data -->
     <div class="table-responsive" *ngIf="hideWhenNoUsuario">
-      <p>Hacé click en el botón para convertir la data.</p>
-      <button onclick="exportar()" download="your-foo.csv">Exportar CSV</button>
       
       <table class="table table-bordered table-responsive-sm table-responsive-md table-responsive-lg">
         <thead>
           <tr>
             
             <th scope="col">UserID </th>
-           <th scope="col">Correo Electronico </th>
-            <th scope="col">Ubicaciones</th>
-            <th class="text-center" scope="col">Eliminar</th>
+            <th scope="col">Correo Electronico </th>
+            <th class="text-center" scope="col">Ubicaciones CSV</th>
+            <th class="text-center" scope="col">Ubicaciones JSON</th>
+            <th class="text-center" scope="col">Eliminar Usuario</th>
+            <th class="text-center" scope="col">Eliminar Ubicaciones de usuario</th>
           </tr>
         </thead>
         <tbody>
-          <!-- *ngFor loop iterates over user array and fetch the user's data -->
-          <!-- paginate pipe will add pagination in user's list, it won't show if items are less then 7 -->
-          <tr *ngFor="let usuario of Usuario | paginate: { itemsPerPage: 7, currentPage: p }; let i = index;">
+         
+          <tr *ngFor="let usuario of Usuario | paginate: { itemsPerPage: 10, currentPage: p }; let i = index;">
             <th scope="row">{{usuario.$key}}</th>
 
             <td>{{usuario.email}}</td>
-            <td class="text-center action-block"><i class="far fa-trash-alt" (click)="downloadUbiUser(usuario) " class="btn" *ngIf="hideWhenNoUsuario"><i class="fas fa-plus custom-fa-plus"></i>
-              Descargar</i></td>
+            <td class="text-center action-block">
+              <button type="button" class="btn btn-outline-success"  (click)="downloadCSVUbiUser(usuario)"  *ngIf="hideWhenNoUsuario" >
+                Descargar</button>
+              </td>
+            <td class="text-center action-block">
+              <button type="button" class="btn btn-outline-success" (click)="downloadUbiUser(usuario)" *ngIf="hideWhenNoUsuario">
+                Descargar</button>
+              </td>
+              
             <td class="text-center action-block">
               <!-- routerLink="/edit-user/{{user.$key}}" is refered to { path: 'edit-user/:id', component: EditUserComponent } in app-routing.moudles.ts -->
-            
-              <i class="far fa-trash-alt" (click)="deleteUser(user) " class="btn btn-danger" *ngIf="hideWhenNoUsuario"><i class="fas fa-plus custom-fa-plus"></i>
-              Eliminar</i></td>
+              <button class="far fa-trash-alt" (click)="deleteUsuario(usuario) " class="btn btn-danger" *ngIf="hideWhenNoUsuario">
+                Eliminar</button></td>
+
+              <td class="text-center action-block">           
+                <button class="far fa-trash-alt" (click)="deleteUbiUsuario(usuario) " class="btn btn-danger" *ngIf="hideWhenNoUsuario">
+                Eliminar</button></td>
           </tr>
         </tbody>
       </table>

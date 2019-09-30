@@ -9,7 +9,7 @@ import { AuthService } from  'src/app/auth/auth.service';
 })
 export class HeaderComponent implements OnInit {
 
-  constructor(private  authService:  AuthService) { }
+  constructor(public  authService:  AuthService) { }
   public nm_name: string = 'MoviTrackyCP';
   
 

@@ -4,6 +4,7 @@ import { Usuario } from '../../shared/usuario';   // Student interface class for
 import { ToastrService } from 'ngx-toastr';      // Alert message using NGX toastr
 import { AuthService } from './../../auth/auth.service';
 import { Ubicacion } from '../../shared/ubicacion';
+import { DownloadService } from '../../services/download.service';
 
 @Component({
   selector: 'nm-user-list',
@@ -17,11 +18,13 @@ export class UserListComponent implements OnInit {
   hideWhenNoUsuario: boolean = false; // Hide students data table when no student.
   noData: boolean = false;            // Showing No Student Message, when no student in database.
   preLoader: boolean = true;   
+  
 
   constructor(
     public crudApi: CrudService, // Inject student CRUD services in constructor.
     public toastr: ToastrService,
     public auth : AuthService,
+    public download: DownloadService,
   ) { }
 
   ngOnInit() {
@@ -42,7 +45,7 @@ export class UserListComponent implements OnInit {
     })
   }
 
-  // Using valueChanges() method to fetch simple list of students data. It updates the state of hideWhenNoStudent, noData & preLoader variables when any changes occurs in student data list in real-time.
+
   dataState() {     
     this.crudApi.GetUsuariosList().valueChanges().subscribe(data => {
       this.preLoader = false;
@@ -56,29 +59,72 @@ export class UserListComponent implements OnInit {
     })
   }
 
-  // Method to delete student object
+  
+  downloadUbiUser(usuario){
+    if(window.confirm('Desea descargar estos datos?')){
+
+      let b = this.crudApi.GetUbiUser(usuario.$key); 
+      b.snapshotChanges().subscribe(data => { 
+      this.Ubicacion = [];
+      let c ={};
+        data.forEach(item => {
+        
+        let a = item.payload.toJSON();
+             
+       
+        
+        a['$key'] = item.key;
+        this.Ubicacion.push(a as Ubicacion);
+
+               
+        
+         })
+         
+         this.download.downloadFile(this.Ubicacion,"ubicaciones");
+         this.toastr.success('Haz descargado correctamente las ubicaciones de: ' + usuario.$key);
+    })
+      
+    }
+  }
+  downloadCSVUbiUser(usuario){
+    if(window.confirm('Desea descargar estos datos?')){
+
+      let b = this.crudApi.GetUbiUser(usuario.$key); 
+      b.snapshotChanges().subscribe(data => { // Using snapshotChanges() method to retrieve list of data along with metadata($key)
+      this.Ubicacion = [];
+      let c ={};
+        data.forEach(item => {
+        
+        let a = item.payload.toJSON();
+        console.log(a);
+     
+       
+        delete a['listaSatelite'];
+        a['$key'] = item.key;
+        console.log(a);
+        this.Ubicacion.push(a as Ubicacion);
+
+               
+        
+         })
+         this.download.downloadCSVFile(this.Ubicacion, 'listaubicaciones');
+         this.toastr.success('Haz descargado correctamente las ubicaciones de: ' + usuario.$key);
+    })
+      
+    }
+
+    
+  }
   deleteUsuario(usuario) {
     if (window.confirm('Are sure you want to delete this student ?')) { // Asking from user before Deleting student data.
       this.crudApi.DeleteUsuario(usuario.$key) // Using Delete student API to delete student.
       this.toastr.success(usuario.email + ' successfully deleted!'); // Alert message will show up when student successfully deleted.
     }
   }
-  downloadUbiUser(usuario){
-    if(window.confirm('Desea descargar estos datos?')){
-
-      let b = this.crudApi.GetUbiUser(usuario.$key); 
-      b.snapshotChanges().subscribe(data => { // Using snapshotChanges() method to retrieve list of data along with metadata($key)
-      this.Ubicacion = [];
-      data.forEach(item => {
-        let a = item.payload.toJSON();
-        a['$key'] = item.key;
-        this.Ubicacion.push(a as Ubicacion);
-        console.log(this.Ubicacion); 
-         })
-         this.auth.downloadFile(this.Ubicacion,"ubicaciones");
-        this.toastr.success('Haz descargado correctamente las ubicaciones de: ' + usuario.$key);
-    })
-      
+  deleteUbiUsuario(usuario) {
+    if (window.confirm('Are sure you want to delete this student ?')) { // Asking from user before Deleting student data.
+      this.crudApi.DeleteUbiUser(usuario.$key) // Using Delete student API to delete student.
+      this.toastr.success(usuario.email + ' successfully deleted!'); // Alert message will show up when student successfully deleted.
     }
   }
 

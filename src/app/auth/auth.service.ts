@@ -55,23 +55,7 @@ onLogoutRedirect():void{
   this.router.navigate(['admin/login']);
 }
 
-downloadFile(data, filename='data') {
-  let Data = JSON.stringify(data);
-  console.log(Data)
-  let blob = new Blob(['\ufeff' + Data], { type: 'text/csv;charset=utf-8;' });
-  let dwldLink = document.createElement("a");
-  let url = URL.createObjectURL(blob);
-  let isSafariBrowser = navigator.userAgent.indexOf('Safari') != -1 && navigator.userAgent.indexOf('Chrome') == -1;
-  if (isSafariBrowser) {  //if Safari open in new window to save file with random filename.
-      dwldLink.setAttribute("target", "_blank");
-  }
-  dwldLink.setAttribute("href", url);
-  dwldLink.setAttribute("download", filename + ".json");
-  dwldLink.style.visibility = "hidden";
-  document.body.appendChild(dwldLink);
-  dwldLink.click();
-  document.body.removeChild(dwldLink);
-}
+
 
 
 }

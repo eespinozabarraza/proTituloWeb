@@ -2,8 +2,12 @@
         <div class="hero-body">
         <div class="container">
           <h1 class="title"></h1>
-          <img src="assets/img/logoMoviTrackyWEB.png" alt="Paris">
-          <H2>Bienvenido al sistema </H2>
+          <img src="assets/img/logoMoviTrackyWEB.png" alt="Paris" class = 'center'>
+            <h1>Panel de Control</h1>
+            <br>
+            <div *ngIf="authService.isLoggedIn"><h2>¡¡¡Bienvenido al sistema!!!</h2></div>
+          
+          
         </div>
         </div>
 </section>
